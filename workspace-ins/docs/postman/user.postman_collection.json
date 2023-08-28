@@ -1,10 +1,10 @@
 {
 	"info": {
-		"_postman_id": "124be0b6-4c01-4aa9-85a1-67f97aaf5fe5",
-		"name": "board",
+		"_postman_id": "6495f056-b3e1-4752-aaed-b723524ba1d8",
+		"name": "user",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
 		"_exporter_id": "2112922",
-		"_collection_link": "https://dark-shadow-3643.postman.co/workspace/board-DB~79535783-d69c-4af1-8eaa-8292c9b66e5c/collection/2112922-124be0b6-4c01-4aa9-85a1-67f97aaf5fe5?action=share&source=collection_link&creator=2112922"
+		"_collection_link": "https://dark-shadow-3643.postman.co/workspace/board-DB~79535783-d69c-4af1-8eaa-8292c9b66e5c/collection/2112922-6495f056-b3e1-4752-aaed-b723524ba1d8?action=share&source=collection_link&creator=2112922"
 	},
 	"item": [
 		{
@@ -13,12 +13,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/boards",
+					"raw": "{{url}}/users",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"boards"
+						"users"
 					]
 				}
 			},
@@ -30,12 +30,12 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "{{url}}/boards/2",
+					"raw": "{{url}}/users/2",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"boards",
+						"users",
 						"2"
 					]
 				}
@@ -43,13 +43,13 @@
 			"response": []
 		},
 		{
-			"name": "등록",
+			"name": "가입",
 			"request": {
 				"method": "POST",
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"postman 등록 1\",\r\n    \"content\": \"postman으로 등록함.\",\r\n    \"userId\": 1\r\n}",
+					"raw": "{\r\n    \"name\": \"김철수\",\r\n    \"email\": \"bbb@ddd\",\r\n    \"password\": \"123\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -57,12 +57,39 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/boards",
+					"raw": "{{url}}/users",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"boards"
+						"users"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "로그인",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"lee@bbb\",\r\n    \"password\": \"456\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{url}}/users/signin",
+					"host": [
+						"{{url}}"
+					],
+					"path": [
+						"users",
+						"signin"
 					]
 				}
 			},
@@ -75,7 +102,7 @@
 				"header": [],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n    \"title\": \"수정 1\",\r\n    \"content\": \"postman으로 수정함.\"\r\n}",
+					"raw": "{\r\n    \"name\": \"이영희\",\r\n    \"password\": \"456\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -83,30 +110,12 @@
 					}
 				},
 				"url": {
-					"raw": "{{url}}/boards/2",
+					"raw": "{{url}}/users/3",
 					"host": [
 						"{{url}}"
 					],
 					"path": [
-						"boards",
-						"2"
-					]
-				}
-			},
-			"response": []
-		},
-		{
-			"name": "삭제",
-			"request": {
-				"method": "DELETE",
-				"header": [],
-				"url": {
-					"raw": "{{url}}/boards/3",
-					"host": [
-						"{{url}}"
-					],
-					"path": [
-						"boards",
+						"users",
 						"3"
 					]
 				}

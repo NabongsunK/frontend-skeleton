@@ -50,8 +50,8 @@ const boardModel = {
   },
   async delete(id){
     try{
-      const sql = `update board set ? where id = ?`;
-      const [ result ] = await pool.query(sql, [article, id]);
+      const sql = `delete from board where id = ?`;
+      const [ result ] = await pool.query(sql, [id]);
       return result.affectedRows;
     }catch(err){
       throw new Error('DB Error', { cause: err });

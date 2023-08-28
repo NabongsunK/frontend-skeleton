@@ -51,8 +51,7 @@ router.put('/:id', async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
   try{
     const id = Number(req.params.id);
-    const article = req.body;
-    const count = await board.update(id, article);
+    const count = await board.delete(id);
     res.json({ count });
   }catch(err){
     next(err);
