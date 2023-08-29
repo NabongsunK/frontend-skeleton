@@ -35,7 +35,7 @@ npm start
 ### UI를 React 컴포넌트로 변경
 * public/index.html
   - 템플릿의 index.html 헤더 부분을 추가
-* src/App.js
+* src/pages/home/index.js
   - 템플릿의 index.html body 부분을 추가
 #### App.js를 JSX 문법으로 수정
 * HTML 주석 제거
@@ -53,11 +53,37 @@ npm start
 ```
 npm i react-router react-router-dom
 ```
+* App.js에 라우팅 추가
+```
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Home from "./pages/home";
+function App() {
+  return (
+    <Router>
+      <Routes>
+        <Route path="/" element={<Home />} />
+      </Routes>
+    </Router>
+  );
+}
+export default App;
+```
 
 ### 컴포넌트 설계
 #### UI를 계층구조로 나누기
+* 컴포넌트를 계층 구조로 설계
+* 단일 책임 원칙: 컴포넌트는 한가지 작업만 수행하도록 구성
+  - 컴포넌트가 많은 작업을 수행하다면 더 작은 하위 컴포넌트로 분할
+#### 정적 버전으로 개발
+* state는 사용하지 않고 props를 이용해서 하위 컴포넌트에 데이터 전달
+* 하향식
+  - 상위 컴포넌트 먼저 구축하고 하위 컴포넌트 구축
+  - 소규모 프로젝트에 적합
+* 상향식
+  - 하위 컴포넌트 먼저 구축하고 상위 컴포넌트 구축
+  - 대규모 프로젝트에 적합
 
-#### 정적인 버전으로 개발
+
 
 
 
