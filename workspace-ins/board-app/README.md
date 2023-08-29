@@ -46,8 +46,13 @@ npm start
 * 속성 수정
   - class -> className
   - style="" -> style={{}}
-
-
+* Link 컴포넌트 사용
+  - "<a href" -> "<Link to"
+  - </a> -> </Link>
+#### react-router 설치
+```
+npm i react-router react-router-dom
+```
 
 ### 컴포넌트 설계
 #### UI를 계층구조로 나누기
