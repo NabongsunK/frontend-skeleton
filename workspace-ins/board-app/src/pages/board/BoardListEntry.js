@@ -14,9 +14,20 @@ const BoardListEntry = function({ item }){
 
       <div className="entry-meta">
         <ul>
-          <li className="d-flex align-items-center"><i className="bi bi-person"></i> <Link to="blog-single.html">{item.userName}</Link></li>
-          <li className="d-flex align-items-center"><i className="bi bi-clock"></i> <Link to="blog-single.html"><time dateTime={item.updatedAt}>{item.updatedAt}</time></Link></li>
-          <li className="d-flex align-items-center"><i className="bi bi-chat-dots"></i> <Link to="blog-single.html">{item.viewCount} Views</Link></li>
+          <li className="d-flex align-items-center">
+            <i className="bi bi-person"></i>
+            <Link to="blog-single.html">{item.userName}</Link>
+          </li>
+          <li className="d-flex align-items-center">
+            <i className="bi bi-clock"></i>
+            <Link to="blog-single.html">
+              <time dateTime={item.updatedAt}>{item.updatedAt}</time>
+            </Link>
+          </li>
+          <li className="d-flex align-items-center">
+            <i className="bi bi-chat-dots"></i>
+            <Link to="blog-single.html">{item.viewCount} Views</Link>
+          </li>
         </ul>
       </div>
 
