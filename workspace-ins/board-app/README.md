@@ -37,7 +37,8 @@ npm start
   - 템플릿의 index.html 헤더 부분을 추가
 * src/pages/home/index.js
   - 템플릿의 index.html body 부분을 추가
-#### App.js를 JSX 문법으로 수정
+#### JSX 문법으로 수정
+* src/pages/home/index.js 파일 수정
 * HTML 주석 제거
 * 닫는 태그 추가
   - <br> -> <br />
@@ -83,7 +84,14 @@ export default App;
   - 하위 컴포넌트 먼저 구축하고 상위 컴포넌트 구축
   - 대규모 프로젝트에 적합
 
+#### state 식별
+* 시간이 지나도 변함없이 유지되는가?
+* props를 통해 부로모부터 전달되는가?
+* 기존 state나 props 기반으로 계산할 수 있는 값인가?
+* 그렇다면 state가 아님
+* 나머지 값이 state일 수 있음
 
+#### 
 
 
 
