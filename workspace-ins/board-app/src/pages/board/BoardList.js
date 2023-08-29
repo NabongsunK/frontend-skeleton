@@ -3,7 +3,7 @@ import BoardListEntry from "./BoardListEntry";
 
 const BoardList = function({ itemList }){
   const list = itemList.map(item => {
-    return <BoardListEntry item={item} />;
+    return <BoardListEntry key={item.id} item={item} />;
   });
   return (
     <>
