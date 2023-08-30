@@ -19,13 +19,35 @@ const boardModel = {
   async findById(id){
     try{
       const sql = `
-        select board.*, user.name
-        from board
-        left join user on board.userId = user.id
-        where board.id = ?
+        select temp.*, user.name as commentUserName from (select 
+            board.*, 
+            user.name,
+            user.email,
+            comment.id as commentId,
+            comment.userId as commentUserId,
+            comment.content as commentContent,
+            DATE_FORMAT(comment.createdAt, '%Y-%m-%d') as commentCreatedAt
+          from board
+          left join user on board.userId = user.id
+          left join board_comment comment on board.id = comment.boardId
+          where board.id = ?) temp, user
+        where temp.commentUserId = user.id
       `;
       const [ result ] = await pool.query(sql, [id]);
-      return result[0];
+      const article = result[0];
+      let comments = [];
+      if(article.commentId){
+        comments = result.map(item => ({
+          id: item.commentId,
+          userId: item .commentUserId,
+          userName: item.commentUserName,
+          content: item.commentContent,
+          createdAt: item.commentCreatedAt
+        }));
+      }
+      article.comments = comments;
+      console.log(article);
+      return article;
     }catch(err){
       throw new Error('DB Error', { cause: err });
     }
