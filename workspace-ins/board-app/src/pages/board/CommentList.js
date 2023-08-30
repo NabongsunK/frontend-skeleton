@@ -2,6 +2,7 @@ import CommentListEntry from "./CommentListEntry";
 import CommentNew from './CommentNew';
 
 const CommentList = function({comments}){
+  console.log('comments', comments);
   var list = comments.map(comment => {
     return <CommentListEntry key={comment.id} comment={comment} />;
   });

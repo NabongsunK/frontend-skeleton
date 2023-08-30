@@ -8,6 +8,7 @@ import { Outlet } from "react-router";
 import { useDispatch, useSelector } from "react-redux";
 import { listArticle } from "../../store/boardSlice";
 
+
 axios.defaults.baseURL = 'http://localhost:30443/api/boards';
 
 const Board = function(){
