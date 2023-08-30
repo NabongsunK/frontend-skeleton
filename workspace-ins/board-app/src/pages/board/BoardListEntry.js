@@ -9,7 +9,7 @@ const BoardListEntry = function({ item }){
       </div>
 
       <h2 className="entry-title">
-        <Link to="blog-single.html">{item.title}</Link>
+        <Link to={`/boards/${item.id}`}>{item.title}</Link>
       </h2>
 
       <div className="entry-meta">
@@ -32,7 +32,7 @@ const BoardListEntry = function({ item }){
       </div>
 
       <div className="entry-content">
-        <p>{item.content}</p>
+        <p>{item.content.substring(0, 128)} {item.content.length>128?'......':''}</p>        
         <div className="read-more">
           <Link to={`/boards/${item.id}`}>Read More</Link>
         </div>
