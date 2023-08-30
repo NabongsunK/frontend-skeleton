@@ -2,10 +2,16 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const boardSlice = createSlice({
   name: 'boardApp',
-  initialState: {itemList: []},
+  initialState: {
+    itemList: [],
+    currentItem: {}
+  },
   reducers: {
     listArticle(state, action){
       state.itemList = action.payload.list;
+    },
+    currentArticle(state, action){
+      state.currentItem = action.payload.article;
     },
     addArticle({itemList}, {payload}){
       itemList.unshift(payload.item);
@@ -22,4 +28,4 @@ const boardSlice = createSlice({
 });
 
 export default boardSlice;
-export const { listArticle, addArticle, updateArticle, deleteArticle } = boardSlice.actions;
+export const { listArticle, currentArticle, addArticle, updateArticle, deleteArticle } = boardSlice.actions;

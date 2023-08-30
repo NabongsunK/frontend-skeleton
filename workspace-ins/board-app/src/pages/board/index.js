@@ -30,25 +30,15 @@ const Board = function(){
   return (
     <main id="main">
       <BreadCrumbs title="게시판" />
-
       <section id="blog" className="blog">
         <div className="container" data-aos="fade-up">
-
           <div className="row">
-            <div className="col-lg-8 entries">
-              <Outlet itemList={itemList} />
-            </div>
-            <div className="col-lg-4">
-              <SideBar />
-            </div>
+            <Outlet itemList={itemList} />
           </div>
-
         </div>
       </section>
-
     </main>
   );
-
 };
 
 export default Board;
