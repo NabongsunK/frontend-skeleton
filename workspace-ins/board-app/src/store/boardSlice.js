@@ -4,7 +4,7 @@ const boardSlice = createSlice({
   name: 'boardApp',
   initialState: {
     itemList: [],
-    currentItem: {}
+    currentItem: { comments: [] }
   },
   reducers: {
     listArticle(state, action){

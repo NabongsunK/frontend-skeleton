@@ -76,7 +76,7 @@ const BoardDetail = function(){
           </div>
         </div>
 
-        <CommentList />
+        <CommentList comments={item.comments} />
       </div>
       <div className="col-lg-4">
         <SideBar />
