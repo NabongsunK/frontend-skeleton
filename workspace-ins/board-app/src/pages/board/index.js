@@ -4,14 +4,20 @@ import SideBar from "./SideBar";
 import axios from 'axios';
 import { useEffect, useState } from "react";
 import { Outlet } from "react-router";
+
+import { useDispatch, useSelector } from "react-redux";
+import { listArticle } from "../../store/boardSlice";
+
 axios.defaults.baseURL = 'http://localhost:30443/api/boards';
 
 const Board = function(){
-  let [itemList, setItemList] = useState([]);
+  const itemList = useSelector(state => state.boardStore.itemList);
+  const dispatch = useDispatch();
+
   const getList = async function(){
     try{
       const res = await axios.get('/');      
-      setItemList(res.data);
+      dispatch(listArticle({list: res.data}));
     }catch(err){
       console.error(err);
     }
