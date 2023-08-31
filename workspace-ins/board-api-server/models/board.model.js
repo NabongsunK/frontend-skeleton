@@ -23,6 +23,7 @@ const boardModel = {
             board.*, 
             user.name,
             user.email,
+            user.profile,
             comment.id as commentId,
             comment.userId as commentUserId,
             comment.content as commentContent,

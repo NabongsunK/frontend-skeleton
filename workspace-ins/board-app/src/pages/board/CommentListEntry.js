@@ -1,17 +1,14 @@
 import { Link } from "react-router-dom";
 
-const CommentListEntry = function(){
+const CommentListEntry = function({comment}){
   return (
     <div id="comment-1" className="comment">
       <div className="d-flex">
         <div className="comment-img"><img src="assets/img/blog/comments-1.jpg" alt="" /></div>
         <div>
-          <h5><Link to="">Georgia Reader</Link> <Link to="#" className="reply"><i className="bi bi-reply-fill"></i> Reply</Link></h5>
-          <time dateTime="2020-01-01">01 Jan, 2020</time>
-          <p>
-            Et rerum totam nisi. Molestiae vel quam dolorum vel voluptatem et et. Est ad aut sapiente quis molestiae est qui cum soluta.
-            Vero aut rerum vel. Rerum quos laboriosam placeat ex qui. Sint qui facilis et.
-          </p>
+          <h5><Link to="">{comment.userName}</Link></h5>
+          <time dateTime={comment.createdAt}>{comment.createdAt}</time>
+          <p>{comment.content}</p>
         </div>
       </div>
     </div>

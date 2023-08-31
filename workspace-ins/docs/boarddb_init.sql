@@ -1,5 +1,5 @@
 INSERT INTO user (name, email, password) VALUES ('kim', 'kim@bbb', 123);
-INSERT INTO user (name, email, password) VALUES ('lee', 'lee@bbb', 456);
+INSERT INTO user (name, email, password, profile) VALUES ('lee', 'lee@bbb', 456, 'blog-author.jpg');
 
 INSERT INTO board (title, content, userId) VALUES ('샘플1', '샘플 데이터1', 1);
 INSERT INTO board (title, content, userId) VALUES ('샘플2', '샘플 데이터2', 2);

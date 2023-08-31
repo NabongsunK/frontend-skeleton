@@ -62,7 +62,7 @@ const BoardDetail = function(){
         </article>
 
         <div className="blog-author d-flex align-items-center">
-          <img src="/assets/img/blog/blog-author.jpg" className="rounded-circle float-left" alt="" />
+          {item.profile?<img src={`/assets/img/blog/${item.profile}`} alt="" className="rounded-circle float-left" />:''}
           <div>
             <h4>{item.name}</h4>
             <div className="social-links">
