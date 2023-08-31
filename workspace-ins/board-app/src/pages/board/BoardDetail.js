@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import CommentList from "./CommentList";
 import SideBar from "./SideBar";
 
@@ -13,6 +13,7 @@ const BoardDetail = function(){
   const {id} = useParams();
   const item = useSelector(state => state.boardStore.currentItem);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const getDetail = async function(){
     try{
@@ -29,6 +30,7 @@ const BoardDetail = function(){
       if(res.data.count){
         dispatch(deleteArticle({id}));
         dispatch(currentArticle({article: {comments: []}}));
+        navigate('/boards');
       }
     }catch(err){
       console.error(err);

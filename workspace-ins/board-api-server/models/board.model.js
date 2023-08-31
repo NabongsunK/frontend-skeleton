@@ -31,8 +31,8 @@ const boardModel = {
           from board
           left join user on board.userId = user.id
           left join board_comment comment on board.id = comment.boardId
-          where board.id = ?) temp, user
-        where temp.commentUserId = user.id
+          where board.id = ?) temp
+        left join user on temp.commentUserId = user.id
       `;
       const [ result ] = await pool.query(sql, [id]);
       const article = result[0];
@@ -73,7 +73,7 @@ const boardModel = {
   },
   async delete(id){
     try{
-      const sql = `delete from board where id = ?`;
+      const sql = `delete from board whre id = ?`;
       const [ result ] = await pool.query(sql, [id]);
       return result.affectedRows;
     }catch(err){
