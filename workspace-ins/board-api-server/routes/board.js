@@ -3,6 +3,7 @@ var router = express.Router();
 
 const boardModel = require('../models/board.model');
 const commentModel = require('../models/board-comment.model');
+const boardService = require('../services/board.service');
 
 // 게시물 목록 조회
 router.get('/', async (req, res, next) => {
@@ -52,8 +53,7 @@ router.put('/:id', async (req, res, next) => {
 router.delete('/:id', async (req, res, next) => {
   try{
     const id = Number(req.params.id);
-    await commentModel.deleteByBoardId(id);
-    const count = await boardModel.delete(id);
+    const count = await boardService.delete(id);
     res.json({ count });
   }catch(err){
     next(err);
