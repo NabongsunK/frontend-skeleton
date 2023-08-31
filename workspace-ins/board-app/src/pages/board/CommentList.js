@@ -9,7 +9,7 @@ const CommentList = function({comments}){
   return (
     <div className="blog-comments">
 
-      <h4 className="comments-count">8 Comments</h4>
+      <h4 className="comments-count">{comments.length} Comments</h4>
 
       {list}
 

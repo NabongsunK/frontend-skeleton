@@ -4,7 +4,7 @@ import SideBar from "./SideBar";
 
 import axios from 'axios';
 import { useDispatch, useSelector } from "react-redux";
-import { currentArticle } from "../../store/boardSlice";
+import { currentArticle, deleteArticle } from "../../store/boardSlice";
 import { useEffect } from "react";
 
 axios.defaults.baseURL = 'http://localhost:30443/api/boards';
@@ -18,6 +18,18 @@ const BoardDetail = function(){
     try{
       const res = await axios(`/${id}`);
       dispatch(currentArticle({article: res.data}));
+    }catch(err){
+      console.error(err);
+    }
+  };
+
+  const deleteHandler = async function(){
+    try{
+      const res = await axios.delete(`/${id}`);
+      if(res.data.count){
+        dispatch(deleteArticle({id}));
+        dispatch(currentArticle({article: {comments: []}}));
+      }
     }catch(err){
       console.error(err);
     }
@@ -75,6 +87,8 @@ const BoardDetail = function(){
             </p>
           </div>
         </div>
+
+        <button type="button" className="btn btn-danger float-end" onClick={deleteHandler}>삭제</button>
 
         <CommentList comments={item.comments} />
       </div>

@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const CommentListEntry = function({comment}){
+ 
   return (
     <div id="comment-1" className="comment">
       <div className="d-flex">

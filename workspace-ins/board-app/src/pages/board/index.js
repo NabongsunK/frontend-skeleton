@@ -28,6 +28,11 @@ const Board = function(){
     getList();
   }, []);
 
+  useEffect(() => {
+    console.log('board 업데이트됨');
+    return ()=>console.log('board 제거됨');
+  });
+
   return (
     <main id="main">
       <BreadCrumbs title="게시판" />

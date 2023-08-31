@@ -21,8 +21,8 @@ const boardSlice = createSlice({
       itemList[updateIndex] = { ...payload.item, no: payload.no };
     },
     deleteArticle({itemList}, {payload}){
-      const deleteIndex = itemList.findIndex(todo => todo.no === payload.no);
-      itemList.splice(deleteIndex, 1);
+      const index = itemList.findIndex(article => article.id === payload.id);
+      itemList.splice(index, 1);
     }
   }
 });
