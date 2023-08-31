@@ -1,30 +1,34 @@
+import { useState } from "react";
+
 const CommentNew = function(){
+  const isLogin = true;
+  const [content, setContent] = useState();
   return (
     <div className="reply-form">
-      <h4>Leave a Reply</h4>
-      <p>Your email address will not be published. Required fields are marked * </p>
-      <form action="">
-        <div className="row">
-          <div className="col-md-6 form-group">
-            <input name="name" type="text" className="form-control" placeholder="Your Name*" />
+      <h4>댓글을 추가하세요.</h4>
+      { isLogin ? 
+        <form action="">
+          <div className="row">
+            <div className="col form-group">
+              <textarea 
+                name="comment" 
+                className="form-control" 
+                placeholder="Your Comment*" 
+                value={content} 
+                onChange={e=>setContent(e.target.value)}
+              ></textarea>
+            </div>
           </div>
-          <div className="col-md-6 form-group">
-            <input name="email" type="text" className="form-control" placeholder="Your Email*" />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col form-group">
-            <input name="website" type="text" className="form-control" placeholder="Your Website" />
-          </div>
-        </div>
-        <div className="row">
-          <div className="col form-group">
-            <textarea name="comment" className="form-control" placeholder="Your Comment*"></textarea>
-          </div>
-        </div>
-        <button type="submit" className="btn btn-primary">Post Comment</button>
+          <button type="submit" className="btn btn-primary">Post Comment</button>
 
-      </form>
+        </form>
+      : 
+        <div>
+          <p>로그인 후에 이용 가능합니다.</p>
+          <button type="button" className="btn btn-primary">로그인</button>
+        </div>
+      }
+      
 
     </div>
   );

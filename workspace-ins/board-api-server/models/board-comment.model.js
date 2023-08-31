@@ -22,7 +22,7 @@ const boardCommentModel = {
     }
   },
   // 게시물의 모든 댓글 삭제
-  async deleteByBoardId(id, conn){
+  async deleteByBoardId(id, conn=pool){
     try{
       const sql = `delete from board_comment where boardId = ?`;
       const [ result ] = await conn.query(sql, [id]);
