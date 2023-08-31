@@ -63,9 +63,14 @@ router.delete('/:id', async (req, res, next) => {
 // 댓글 등록
 router.post('/:id/comments', async (req, res, next) => {
   try{
-    const article = req.body;
-    const id = await commentModel.create(article);
-    res.json({ id });
+    const userId = 2;
+    const article = {
+      boardId: Number(req.body.boardId),
+      content: req.body.content,
+      userId: userId
+    };
+    const comment = await commentModel.create(article);
+    res.json({ comment });
   }catch(err){
     next(err);
   }
