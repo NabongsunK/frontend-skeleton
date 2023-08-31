@@ -71,10 +71,10 @@ const boardModel = {
       throw new Error('DB Error', { cause: err });
     }
   },
-  async delete(id){
+  async delete(id, conn){
     try{
-      const sql = `delete from board whre id = ?`;
-      const [ result ] = await pool.query(sql, [id]);
+      const sql = `delete from board where id = ?`;
+      const [ result ] = await conn.query(sql, [id]);
       return result.affectedRows;
     }catch(err){
       throw new Error('DB Error', { cause: err });

@@ -28,7 +28,7 @@ const BoardDetail = function(){
     try{
       const res = await axios.delete(`/${id}`);
       if(res.data.count){
-        dispatch(deleteArticle({id}));
+        dispatch(deleteArticle({id: Number(id)}));
         dispatch(currentArticle({article: {comments: []}}));
         navigate('/boards');
       }
