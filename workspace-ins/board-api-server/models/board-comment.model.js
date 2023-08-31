@@ -6,12 +6,14 @@ const boardCommentModel = {
   async findById(id){
     try{
       const sql = `select 
-          id, 
+          board_comment.id as id, 
           userId, 
           content, 
-          DATE_FORMAT(createdAt, '%Y-%m-%d') as createdAt 
+          user.name as userName,
+          DATE_FORMAT(board_comment.createdAt, '%Y-%m-%d') as createdAt
           from board_comment 
-        where id = ?`;
+          left join user on board_comment.userId = user.id
+        where board_comment.id = ?`;
       const [ result ] = await pool.query(sql, [id]);
       return result[0];
     }catch(err){

@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import moment from 'moment';
 
 const BoardListEntry = function({ item }){
   return (
@@ -16,12 +17,12 @@ const BoardListEntry = function({ item }){
         <ul>
           <li className="d-flex align-items-center">
             <i className="bi bi-person"></i>
-            <Link to="blog-single.html">{item.userName}</Link>
+            <Link to="blog-single.html">{item.name}</Link>
           </li>
           <li className="d-flex align-items-center">
             <i className="bi bi-clock"></i>
             <Link to="blog-single.html">
-              <time dateTime={item.updatedAt}>{item.updatedAt}</time>
+              <time dateTime={moment(item.updatedAt).format('YYYY-MM-DD HH:mm:ss')}>{moment(item.updatedAt).format('YYYY-MM-DD HH:mm:ss')}</time>
             </Link>
           </li>
           <li className="d-flex align-items-center">

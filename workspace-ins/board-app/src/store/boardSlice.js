@@ -13,8 +13,8 @@ const boardSlice = createSlice({
     currentArticle(state, action){
       state.currentItem = action.payload.article;
     },
-    addArticle({itemList}, {payload}){
-      itemList.unshift(payload.item);
+    addComment({currentItem}, {payload}){
+      currentItem.comments.push(payload.comment);
     },
     updateArticle({itemList}, {payload}){
       const updateIndex = itemList.findIndex(todo => todo.no === payload.no);
@@ -28,4 +28,4 @@ const boardSlice = createSlice({
 });
 
 export default boardSlice;
-export const { listArticle, currentArticle, addArticle, updateArticle, deleteArticle } = boardSlice.actions;
+export const { listArticle, currentArticle, addComment, updateArticle, deleteArticle } = boardSlice.actions;

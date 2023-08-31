@@ -7,8 +7,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { currentArticle, deleteArticle } from "../../store/boardSlice";
 import { useEffect } from "react";
 
-axios.defaults.baseURL = 'http://localhost:30443/api/boards';
-
 const BoardDetail = function(){
   const {id} = useParams();
   const item = useSelector(state => state.boardStore.currentItem);
