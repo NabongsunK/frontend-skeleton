@@ -33,6 +33,7 @@ const boardModel = {
           left join board_comment comment on board.id = comment.boardId
           where board.id = ?) temp
         left join user on temp.commentUserId = user.id
+        order by commentId asc
       `;
       const [ result ] = await pool.query(sql, [id]);
       const article = result[0];
@@ -47,7 +48,7 @@ const boardModel = {
         }));
       }
       article.comments = comments;
-      console.log(article);
+      
       return article;
     }catch(err){
       throw new Error('DB Error', { cause: err });

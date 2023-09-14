@@ -9,6 +9,9 @@ import BoardList from "./pages/board/BoardList";
 import { Provider } from 'react-redux';
 import store from './store/store';
 
+const a = 10;
+a = 20;
+
 function App() {
   return (
     <Provider store={store}>
