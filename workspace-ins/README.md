@@ -110,7 +110,7 @@ module.exports = {
     }
 }
 ```
-* env: 자바스클립트가 실행되는 환경 지정
+* env: 자바스크립트가 실행되는 환경 지정
   - browser를 지정할 경우 document, alert() 등을 window 객체의 속성으로 인식해서 경고/에러 표시하지 않음
   - commonjs를 지정할 경우 module 등을 nodejs의 모듈 객체로 인식해서 경고/에러 표시하지 않음
 * extends: eslint-config-airbnb 같은 외부의 규칙 세트와 스타일 가이드를 사용할 경우 지정
@@ -122,7 +122,7 @@ module.exports = {
 module.exports = {
   ......
   "rules": {
-    "react/react-in-jax-scope": "off",
+    "react/react-in-jsx-scope": "off",
     "react/prop-types": 0
   }
 }
