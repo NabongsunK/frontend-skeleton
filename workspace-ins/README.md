@@ -1,4 +1,4 @@
-# React 게시판 스켈리톤 프로젝트
+# React 게시판 스켈레톤 프로젝트
 
 ## 프로젝트 소개
 
@@ -29,12 +29,13 @@ const App = function(){
 
 const App = () => <h1>Hello</h1>;
 ```
+
 #### 다양한 코드 컨벤션 가이드
 * [Airbnb JavsScript Style Guide](https://github.com/airbnb/javascript)
-- [Airbnb React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react)
-- [JavaScript Standard Style](https://standardjs.com/readme-kokr.html)
-- [Idiomatic JavaScript Style Guide](https://github.com/rwaldron/idiomatic.js/tree/master/translations/ko_KR)
-- [Google Style Guide](https://google.github.io/styleguide/jsguide.html)
+* [Airbnb React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react)
+* [JavaScript Standard Style](https://standardjs.com/readme-kokr.html)
+* [Idiomatic JavaScript Style Guide](https://github.com/rwaldron/idiomatic.js/tree/master/translations/ko_KR)
+* [Google Style Guide](https://google.github.io/styleguide/jsguide.html)
 
 #### ESLint 컨벤션
 
@@ -78,42 +79,50 @@ npx eslint --init
 * .eslintrc.js
 ```
 module.exports = {
-    "env": {
-        "browser": true,
-        "es2021": true
-    },
-    "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended"
-    ],
-    "overrides": [
-        {
-            "env": {
-                "node": true
-            },
-            "files": [
-                ".eslintrc.{js,cjs}"
-            ],
-            "parserOptions": {
-                "sourceType": "script"
-            }
-        }
-    ],
-    "parserOptions": {
-        "ecmaVersion": "latest",
-        "sourceType": "module"
-    },
-    "plugins": [
-        "react"
-    ],
-    "rules": {
+  "env": {
+    "browser": true,
+    "es2021": true
+  },
+  "extends": [
+    "eslint:recommended", // eslint
+    "plugin:react/recommended"  // eslint-plugin-react
+  ],
+  "overrides": [
+    {
+      "env": {
+        "node": true
+      },
+      "files": [
+        ".eslintrc.{js,cjs}"
+      ],
+      "parserOptions": {
+        "sourceType": "script"
+      }
     }
+  ],
+  "parserOptions": {
+    "ecmaVersion": "latest",
+    "sourceType": "module"
+  },
+  "plugins": [
+    "react" // eslint-plugin-react
+  ],
+  "rules": {
+  }
 }
 ```
 * env: 자바스크립트가 실행되는 환경 지정
   - browser를 지정할 경우 document, alert() 등을 window 객체의 속성으로 인식해서 경고/에러 표시하지 않음
   - commonjs를 지정할 경우 module 등을 nodejs의 모듈 객체로 인식해서 경고/에러 표시하지 않음
-* extends: eslint-config-airbnb 같은 외부의 규칙 세트와 스타일 가이드를 사용할 경우 지정
+* plugins: 규칙, 환경, 구성 등을 정의한 서드 파티 플러그인 등록
+  - 플러그인 이름의 접두사 "eslint-plugin-" 생략 가능
+* extends: eslint-config-airbnb 같은 Shareable Config 모듈을 지정하면 rules, plugins 등 규칙 세트와 스타일을 상속받을 수 있음
+  - Shareable Config 모듈 이름의 접두사 "eslint-config-" 생략 가능
+* rules: 사용자 정의 규칙 지정
+  - plugins, extends에서 정의된 규칙보다 우선함
+  - 'off' 또는 0
+  - 'warn' 또는 1
+  - 'error' 또는 2
 
 ##### 커스텀 규칙 설정
 * 필요에 따라 .eslintrc.js 파일의 rules에 커스텀 룰 추가
@@ -133,6 +142,10 @@ module.exports = {
 ```
 npx eslint .
 ```
+* 지정한 폴더내의 모든 파일 검사
+```
+npx eslint ./src
+```
 * 지정한 파일 검사
 ```
 npx eslint ./src/App.js
@@ -141,13 +154,83 @@ npx eslint ./src/App.js
 ##### VSCode ESLint 플러그인 설치
 * VSCode 편집창에서 바로 ESLint 경고/에러 확인 가능
 * VSCode > Extensions > ESLint 검색, 설치
-  - VSCode에서 오픈한 작업폴더에 설치된 eslint 모듈이나 글로벌로 설치된 eslint 모듈을 사용하므로 eslint 모듈이 설치되어 있어야 함
+  - VSCode에서 오픈한 작업폴더에 설치된 eslint 모듈이나 글로벌로 설치된 eslint 모듈을 사용하므로 eslint 모듈이 설치되어 있어야 함(create-react-app으로 프로젝트 생성시 기본으로 설치됨)
   ```
   npm i eslint
   npm i -g eslint
   ```
 
-### 깃 커밋 메세지 컨벤션
+
+#### Prettier 컨벤션
+
+##### Prettier
+* 자바스크립트 Code Formatting 도구(코드 정렬, 정리 등 코드 스타일 통일에 사용)
+
+##### 프로젝트에 Prettier 설정
+* 설정 파일 작성 방법: https://prettier.io/docs/en/configuration.html
+* 설정 옵션: https://prettier.io/docs/en/options
+* 프로젝트 루트에 .prettierrc.js 파일 작성
+* .prettierrc.js 예시
+```
+module.exports = {
+  // 문자열에 single quote 사용(기본값 true)
+  singleQuote: true,  
+  // 코드 마지막에 세미콜론 추가(기본값 true)
+  semi: true,
+  // 들여쓰기를 탭으로 지정할지 여부(기본값 false)
+  useTabs: false,
+  // 들여쓰기 너비 2칸(기본값 2)
+  tabWidth: 2,
+  // 여러 줄의 쉼표로 구분된 구문 구조에서 후행 쉼표를 추가(none: 설정 안함, es5: 객체,배열에 설정, all(기본값): 함수 정의나 호출 등 가능한 모든 곳에 설정)
+  trailingComma: 'all',
+  // 한줄에 80 글자가 넘어가면 줄바꿈(기본값 80)
+  printWidth: 80,
+  // 화살표 함수의 매개변수가 하나만 지정될 때 괄호 생략(always: 항상 괄호 명시, avoid: 가능하면 생략)
+  arrowParens: 'avoid',
+  // windows에 뜨는 'Delete cr' 에러 해결
+  endOfLine: "auto"
+};
+```
+
+##### Prettier 실행
+* 현재 폴더내의 모든 파일을 포맷에 맞춰서 변환
+```
+npx prettier --write .
+```
+* 지정한 폴더내의 모든 파일을 포맷에 맞춰서 변환
+```
+npx prettier --write ./src
+```
+* 지정한 파일을 포맷에 맞춰서 변환
+```
+npx prettier --write ./src/App.js
+```
+
+##### ESLint와 충돌
+* ESLint는 코드 품질 규칙뿐만 아니라 스타일 규칙도 포함됨
+* 코드 품질 문제는 ESLint를 사용하고 스타일 규칙은 Prettier를 사용
+* eslint-config-prettier: 불필요하거나 Prettier와 충돌할 수 있는 모든 규칙을 비활성화시키는 Shareable Config 모듈
+* eslint-config-prettier 설치
+```
+npm i -D eslint-config-prettier
+```
+* 다른 구성을 재정의하기 위해 .eslintrc 파일 extends의 마지막에 추가
+```
+{
+  "extends": [
+    ......
+    "prettier"
+  ]
+}
+```
+
+##### VSCode에 Prettier Extention 추가
+* Extentions > Prettier - Code formatter 설치
+* File > Preferences > Settings > Workspace
+  - "Editor: Format On Save" 체크 (파일 저장시 자동으로 포맷팅)
+  - "Editor: Default Formatter"에 "Prettier - Code formatter" 선택 (기본 JavaScript formatter 대신 Prettier를 formatter로 지정)
+
+### Git 커밋 메세지 컨벤션
 * 커밋 메세지의 일관성을 위해 작성
 
 #### Udacity Git Commit Message Style Guide
@@ -187,3 +270,4 @@ refactor: 사용자 인증을 세션에서 토큰 방식으로 변경
 Resolves: #123
 See also: #456, #789
 ```
+
