@@ -1,60 +1,189 @@
-# 프로젝트
+# React 게시판 스켈리톤 프로젝트
 
-팀명	팀장	  부팀장	팀원	  팀원	  팀원	  프로젝트
-1조		백재웅	천서준	한윤희	당현진	이해연	클라우드 펀딩 기반의 Social Activity & Learning 서비스
-2조		김남운	박범현	부반손	조채은	신규림	무인운송차량 관제 및 충전소 위치정보제공 시스템
-3조		최동윤	장준범	이상민	안은비	이경민	목표달성 커뮤니티를 활용한 건강관리 어플리케이션
-4조		김명준	차동혁	김성호	유상민	최한슬	리버스 옥션 기반 절판도서 구매 서비스
-5조		강성수	한종악	황승민	박지호	박민수	금융데이터 기반 티켓 할인 구매 시스템
+## 프로젝트 소개
 
-236경기 김포시 모담공원로28번길 46-34 
-경기도 김포시 모담공원로28번길 46-28, 제203동 제1층 제236호 [운양동 1341-42 라피아노]
-## 무인운송차량 관제 및 충전소 위치정보제공 시스템
-* 난이도 상 (단순 게시판이 아님)
-* 다양한 아이디어가 나올 수 있음
-* 충전소 정보는 공공데이터포탈 활용하거나 임의로 API 서버 만들어서 제공
-  - 충전소 위치, 충전기 개수, 충전 차량 수, 남은 충전시간 등
-* 무인 버스, 셔틀
-* 지도 API
-* 데이터 포털 Open API
-* 충전 필요 알림. 가까운 충전소 화면에 알려주면 차량이 자동으로 이동하는 기능
-* 관리자
+## 팀원 소개
 
-## 금융데이터 기반 티켓 할인 구매 시스템
-* 난이도 최상
-* 파일 업로드
-* 스마트폰 인증 (SMS 인증번호)
-  - SMS: https://www.ncloud.com/product/applicationService/sens 매달 50건 무료
-* 지도 API
-  - geolocation API 사용법
-* 결제
-  - 결제창 호출까지
-  - 포트원 결제 테스트: https://sdk-playground.portone.io
-* SMS, 이메일 전송
-* 관리자
-* 권한 관리
+## 개발 일정
 
-## 클라우드 펀딩 기반의 Social Activity & Learning 서비스
-* 난이도 중하(sns 로그인 때문에 중)
-* R&R, Role and Responsibilities(역할과 책임) 정의
-  - 권한 관리
-  - 프로젝트 오너, 참여자(등급 구분)
-* SNS 간편 로그인(OAuth 인증)
-* 알림 (이메일)
+## 개발 환경
 
-## 목표달성 커뮤니티를 활용한 건강관리 어플리케이션
-* 난이도 중상 (시각화, 사용자가 생성한 그룹이 게시판 테이블로 만들어 짐)
-* 개인별 목표, 데일리 상태값 입력, 결과 시각화 (chart 라이브러리)
-  - 상태값 입력은 추후 스마트워치 사용자는 자동 입력될 수 있게
-  - 운동 목록은 미리 제공 및 사용자가 신청하면 관리자 승인 후 자동 추가
-* 포인트 부여의 기준은 달성률 기준
-  - 목표값이 너무 낮다면? 운동별 기본 목표값을 정해놓고 가중치 부여하거나 같은 운동 평균값 기준으로 가중치 부여?
-* 시각화 
-* 동일 지역이나 목표별 커뮤니티 그룹 생성 (그룹별 테이블 생성)
-  - 동일 지역을 어떻게 구분하나? 우체국 우편번호의 지역 활용?
+## 컨벤션
 
-## 리버스 옥션 기반 절판도서 구매 서비스
-* 난이도 하 (게시판 수준)
-* 권한 관리
-* 알림 (이메일, SMS)
+### 코드 컨벤션
+* 가독성이 좋고 유지보수가 쉬운 코드를 작성하기 위한 코딩 스타일 규약
+* 개발자간 서로 다른 코딩 스타일 예시
 
+```
+if(a==100) return true;
+
+if(a == 100) {
+  return true;
+}
+
+const App = function(){
+  return (
+    <h1>Hello</h1>
+  );
+};
+
+const App = () => <h1>Hello</h1>;
+```
+#### 다양한 코드 컨벤션 가이드
+* [Airbnb JavsScript Style Guide](https://github.com/airbnb/javascript)
+- [Airbnb React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react)
+- [JavaScript Standard Style](https://standardjs.com/readme-kokr.html)
+- [Idiomatic JavaScript Style Guide](https://github.com/rwaldron/idiomatic.js/tree/master/translations/ko_KR)
+- [Google Style Guide](https://google.github.io/styleguide/jsguide.html)
+
+#### ESLint 컨벤션
+
+##### ESLint
+* 정적 문법 검사 및 코딩 스타일 등을 점검해서 런타임 오류나 코드의 가독성을 높이기 위해 사용하는 도구
+* 규칙 예시
+  - const로 선언한 변수에 값을 재할당하면 경고
+  - 변수를 선언하지 않고 사용하면 경고
+  - 선언후 사용안되는 변수가 있으면 경고
+  - 들여쓰기를 스페이스 2개, 4개 또는 탭으로 할지 여부를 지정해서 규칙을 지키지 않으면 경고
+* 사전에 정의한 규칙을 지키지 않는다면 경고나 에러를 띄워서 문법 오류나 코딩 스타일을 유지할 수 있게 도와줌
+* create-react-app으로 생성한 프로젝트에는 기본으로 내장되어 있고 npm start로 서버 구동시 동작
+  - 터미널에서 ESLint 경고/에러 확인 가능
+
+##### React 프로젝트의 ESLint 설정
+* 설정 파일 작성 방법: https://eslint.org/docs/latest/use/configure/configuration-files
+* 프로젝트 루트에서 다음 명령 실행후 프로젝트 환경 질문에 답변하면 .eslintrc.js 파일 생성됨
+```
+npm init @eslint/config
+또는
+npx eslint --init
+
+* How would you like to use ESLint?
+  - To check syntax and find problems
+* What type of modules does your project use?
+  - JavaScript modules (import/export)
+* Which framework does your project use?
+  - React
+* Does your project use TypeScript?
+  - No
+* Where does your code run?
+  - browser
+* What format do you want your config file to be in?
+  - JavaScript
+* eslint-plugin-react@latest eslint@latest. Would you like to install them now?
+  - Yes
+* Which package manager do you want to use?
+  - npm
+```
+
+* .eslintrc.js
+```
+module.exports = {
+    "env": {
+        "browser": true,
+        "es2021": true
+    },
+    "extends": [
+        "eslint:recommended",
+        "plugin:react/recommended"
+    ],
+    "overrides": [
+        {
+            "env": {
+                "node": true
+            },
+            "files": [
+                ".eslintrc.{js,cjs}"
+            ],
+            "parserOptions": {
+                "sourceType": "script"
+            }
+        }
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest",
+        "sourceType": "module"
+    },
+    "plugins": [
+        "react"
+    ],
+    "rules": {
+    }
+}
+```
+* env: 자바스클립트가 실행되는 환경 지정
+  - browser를 지정할 경우 document, alert() 등을 window 객체의 속성으로 인식해서 경고/에러 표시하지 않음
+  - commonjs를 지정할 경우 module 등을 nodejs의 모듈 객체로 인식해서 경고/에러 표시하지 않음
+* extends: eslint-config-airbnb 같은 외부의 규칙 세트와 스타일 가이드를 사용할 경우 지정
+
+##### 커스텀 규칙 설정
+* 필요에 따라 .eslintrc.js 파일의 rules에 커스텀 룰 추가
+* 작성 방법: https://eslint.org/docs/latest/rules
+```
+module.exports = {
+  ......
+  "rules": {
+    "react/react-in-jax-scope": "off",
+    "react/prop-types": 0
+  }
+}
+```
+
+##### ESLint 실행
+* 현재 폴더내의 모든 파일 검사
+```
+npx eslint .
+```
+* 지정한 파일 검사
+```
+npx eslint ./src/App.js
+```
+
+##### VSCode ESLint 플러그인 설치
+* VSCode 편집창에서 바로 ESLint 경고/에러 확인 가능
+* VSCode > Extensions > ESLint 검색, 설치
+  - VSCode에서 오픈한 작업폴더에 설치된 eslint 모듈이나 글로벌로 설치된 eslint 모듈을 사용하므로 eslint 모듈이 설치되어 있어야 함
+  ```
+  npm i eslint
+  npm i -g eslint
+  ```
+
+### 깃 커밋 메세지 컨벤션
+* 커밋 메세지의 일관성을 위해 작성
+
+#### Udacity Git Commit Message Style Guide
+* 메세지 구조
+
+```
+type: Subject
+
+body
+
+footer
+```
+
+* type의 유형
+  - feat: 새로운 기능
+  - fix: 버그 수정
+  - docs: 문서 변경 사항(readme.md, json 파일 등)
+  - style: 코드 포맷 변경, 세미콜론 수정 등. 기능 변경 없음
+  - refactor: 코드 리팩토링
+  - test: 테스트 코드. 기능 변경 없음
+  - chore: 빌드 작업 수정, 패키지 매니저 수정 등. 기능 변경 없음
+* subject(제목) 규칙
+  - 영문자 기준 50자 이내, 대문자로 시작, 마침표로 끝나지 않음
+  - 과거 시제를 사용하지 않고 간결하게 기술. "수정했음", "수정함" 대신 "수정"
+* body(본문) 규칙
+  - 일반적으로 제목만 있으면 되지만 추가 설명이 필요할때 선택적으로 기입
+  - 어떻게 변경되었는지가(어떻게는 코드를 보면 되므로) 아니라 무엇을, 왜 변경하는지를 설명
+* footer(꼬리말)
+  - 이슈 ID 등의 부가 정보 제공시 선택적으로 기입
+
+* 사용 예시
+```
+refactor: 사용자 인증을 세션에서 토큰 방식으로 변경
+
+추후 이중화 등의 확장을 용이하게 하기 위해 변경
+
+Resolves: #123
+See also: #456, #789
+```
