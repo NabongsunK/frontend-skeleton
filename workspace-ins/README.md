@@ -271,3 +271,86 @@ Resolves: #123
 See also: #456, #789
 ```
 
+#### Gitmoji
+* Git + Emoji
+* Git 커밋 메세지의 type을 텍스트 대신 Emoji로 지정해서 한눈에 어떤 작업을 했는지 식별
+
+##### VSCode에 Gitmoji Extention 추가
+* Extentions > Gitmoji 설치
+* File > Preferences > Settings > Workspace
+  - "Gitmoji: Add Custom Emoji" > Edit in settings.json 클릭 후 Git 커밋 메세지 컨벤션에 맞춰서 커스텀 이모지 추가
+  - 예시
+  ```
+  {
+    "gitmoji.addCustomEmoji": [
+      {
+        "emoji": "✨",
+        "code": ":feat:",
+        "description": "새로운 기능 추가"
+      },
+      {
+        "emoji": "👔",
+        "code": ":logic:",
+        "description": "비즈니스 로직 수정"
+      },
+      {
+        "emoji": "🚧",
+        "code": ":cont:",
+        "description": "진행중인 작업"
+      },
+      {
+        "emoji": "♻️",
+        "code": ":refactor:",
+        "description": "코드 리팩토링"
+      },
+      {
+        "emoji": "🔥",
+        "code": ":remove:",
+        "description": "파일 삭제"
+      },
+      {
+        "emoji": "🚚",
+        "code": ":rename:",
+        "description": "파일명 수정/이동"
+      },
+      {
+        "emoji": "⚰️",
+        "code": ":cleanup:",
+        "description": "코드 정리"
+      },
+      {
+        "emoji": "💄",
+        "code": ":style:",
+        "description": "UI/Style 추가/수정"
+      },
+      {
+        "emoji": "🐛",
+        "code": ":fix:",
+        "description": "버그 수정"
+      },
+      {
+        "emoji": "📝",
+        "code": ":docs:",
+        "description": "문서 추가/수정"
+      },
+      {
+        "emoji": "➕",
+        "code": ":adddep:",
+        "description": "의존성 추가"
+      },
+      {
+        "emoji": "➖",
+        "code": ":remdep:",
+        "description": "의존성 삭제"
+      },
+      {
+        "emoji": "🔧",
+        "code": ":conf:",
+        "description": "설정파일 추가/수정"
+      }
+    ],
+    "gitmoji.onlyUseCustomEmoji": true,
+  }
+  ```
+* Gitmoji 사용
+  - VSCode > Source Control 커밋 메세지 입력시 Choose Gitmoji 아이콘 선택해서 사용
