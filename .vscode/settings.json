@@ -1,4 +1,6 @@
 {
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
   "gitmoji.addCustomEmoji": [
     {
       "emoji": "✨",
@@ -65,8 +67,5 @@
       "code": ":conf:",
       "description": "설정파일 추가/수정"
     }
-  ],
-  "gitmoji.onlyUseCustomEmoji": false,
-  "editor.formatOnSave": true,
-  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  ]
 }
