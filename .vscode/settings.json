@@ -67,5 +67,6 @@
       "code": ":conf:",
       "description": "설정파일 추가/수정"
     }
-  ]
+  ],
+  "gitmoji.onlyUseCustomEmoji": true
 }
