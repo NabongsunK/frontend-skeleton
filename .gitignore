@@ -2,6 +2,7 @@ ins
 .history
 **/node_modules
 workspace
+vscode
 
 # 오피스 임시파일
 ~$*
