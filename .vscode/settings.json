@@ -23,12 +23,17 @@
     {
       "emoji": "🔥",
       "code": ":remove:",
-      "description": "파일/코드 삭제"
+      "description": "파일 삭제"
     },
     {
       "emoji": "🚚",
       "code": ":rename:",
       "description": "파일명 수정/이동"
+    },
+    {
+      "emoji": "⚰️",
+      "code": ":cleanup:",
+      "description": "코드 정리"
     },
     {
       "emoji": "💄",
@@ -61,5 +66,7 @@
       "description": "설정파일 추가/수정"
     }
   ],
-  "gitmoji.onlyUseCustomEmoji": true,
+  "gitmoji.onlyUseCustomEmoji": false,
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
 }
