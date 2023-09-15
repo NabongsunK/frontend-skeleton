@@ -167,6 +167,10 @@ npx eslint ./src/App.js
 * 자바스크립트 Code Formatting 도구(코드 정렬, 정리 등 코드 스타일 통일에 사용)
 
 ##### 프로젝트에 Prettier 설정
+* Prettier 설치
+```
+npm i prettier
+```
 * 설정 파일 작성 방법: https://prettier.io/docs/en/configuration.html
 * 설정 옵션: https://prettier.io/docs/en/options
 * 프로젝트 루트에 .prettierrc.js 파일 작성
