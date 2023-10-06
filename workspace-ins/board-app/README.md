@@ -326,3 +326,4 @@ const res = await axios.get(`${process.env.REACT_APP_API_SERVER}/boards`);
 ### 전역 상태 관리
 #### Recoil
 #### recoil-persist
+
