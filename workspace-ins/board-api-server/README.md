@@ -48,8 +48,6 @@ npm start
 * 웹 브라우저로 접속
   - http://localhost:33443
 
-
-
 ## DB 설계
 ### MySQL Workbench 실행
 * File > New Model
@@ -76,7 +74,7 @@ npm start
 
 ### board 테이블
 #### 생성
-* boardDB > Tables > Place a New Table > 화면 클릭
+* boarddb > Tables > Place a New Table > 화면 클릭
 #### 수정
 * 생성된 테이블 더블클릭
 * Table Name: board
@@ -91,14 +89,14 @@ npm start
 #### userId에 FK 추가
 * Foreign Keys 탭 선택
 * Foreign Key Name: fk_board_userId
-* Referenced Table: 'boardDB'.'user'
+* Referenced Table: 'boarddb'.'user'
 * Column: userId
 * Referenced Column: id
 - board - Table 닫기
 
 ### board_comment 테이블
 #### 생성
-* boardDB > Tables > Place a New Table > 화면 클릭
+* boarddb > Tables > Place a New Table > 화면 클릭
 #### 수정
 * 생성된 테이블 더블클릭
 * Table Name: board_comment
@@ -121,19 +119,19 @@ npm start
 #### boardId에 FK 추가
 * Foreign Keys 탭 선택
 * Foreign Key Name: fk_board_comment_boardId
-* Referenced Table: 'boardDB'.'board'
+* Referenced Table: 'boarddb'.'board'
 * Column: boardId
 * Referenced Column: id
 #### userId에 FK 추가
 * Foreign Keys 탭 선택
 * Foreign Key Name: fk_board_comment_userId
-* Referenced Table: 'boardDB'.'user'
+* Referenced Table: 'boarddb'.'user'
 * Column: userId
 * Referenced Column: id
 * board_comment - Table 닫기
 
 ### ERD 저장
-* docs/boardDB 지정
+* docs/boarddb 지정
 
 ### ERD로 테이블 생성
 * Database > Forward Engineer
