@@ -1,7 +1,8 @@
 import { Link } from "react-router-dom";
+
 import moment from 'moment';
 
-const BoardListEntry = function({ item }){
+const Entry = function({item}){
   return (
     <article className="entry">
 
@@ -17,7 +18,7 @@ const BoardListEntry = function({ item }){
         <ul>
           <li className="d-flex align-items-center">
             <i className="bi bi-person"></i>
-            <Link to="blog-single.html">{item.name}</Link>
+            <Link to="blog-single.html">{item.userName}</Link>
           </li>
           <li className="d-flex align-items-center">
             <i className="bi bi-clock"></i>
@@ -27,13 +28,13 @@ const BoardListEntry = function({ item }){
           </li>
           <li className="d-flex align-items-center">
             <i className="bi bi-chat-dots"></i>
-            <Link to="blog-single.html">{item.viewCount} Views</Link>
+            <Link to="blog-single.html">{item.view} Views</Link>
           </li>
         </ul>
       </div>
 
       <div className="entry-content">
-        <p>{item.content.substring(0, 128)} {item.content.length>128?'......':''}</p>        
+        <p>{item.content.substring(0, 100)}</p>
         <div className="read-more">
           <Link to={`/boards/${item.id}`}>Read More</Link>
         </div>
@@ -43,4 +44,4 @@ const BoardListEntry = function({ item }){
   );
 };
 
-export default BoardListEntry;
+export default Entry;

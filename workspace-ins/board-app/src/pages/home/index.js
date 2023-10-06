@@ -1,17 +1,17 @@
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom";
 
-function Home() {
+const Home = function () {
   return (
     <>
       <section id="hero">
         <div id="heroCarousel" data-bs-interval="5000" className="carousel slide carousel-fade" data-bs-ride="carousel">
-    
+
           <ol className="carousel-indicators" id="hero-carousel-indicators"></ol>
-    
+
           <div className="carousel-inner" role="listbox">
-    
-            
-            <div className="carousel-item active" style={{'backgroundImage': 'url(assets/img/slide/slide-1.jpg)'}}>
+
+
+            <div className="carousel-item active" style={{ 'backgroundImage': 'url(assets/img/slide/slide-1.jpg)' }}>
               <div className="carousel-container">
                 <div className="container">
                   <h2 className="animate__animated animate__fadeInDown">Welcome to <span>Sailor</span></h2>
@@ -20,9 +20,9 @@ function Home() {
                 </div>
               </div>
             </div>
-    
-            
-            <div className="carousel-item" style={{'backgroundImage': 'url(assets/img/slide/slide-2.jpg)'}}>
+
+
+            <div className="carousel-item" style={{ 'backgroundImage': 'url(assets/img/slide/slide-2.jpg)' }}>
               <div className="carousel-container">
                 <div className="container">
                   <h2 className="animate__animated animate__fadeInDown">Lorem Ipsum Dolor</h2>
@@ -31,9 +31,9 @@ function Home() {
                 </div>
               </div>
             </div>
-    
-            
-            <div className="carousel-item" style={{'backgroundImage': 'url(assets/img/slide/slide-3.jpg)'}}>
+
+
+            <div className="carousel-item" style={{ 'backgroundImage': 'url(assets/img/slide/slide-3.jpg)' }}>
               <div className="carousel-container">
                 <div className="container">
                   <h2 className="animate__animated animate__fadeInDown">Sequi ea ut et est quaerat</h2>
@@ -42,26 +42,26 @@ function Home() {
                 </div>
               </div>
             </div>
-    
+
           </div>
-    
-          <Link className="carousel-control-prev" to="#heroCarousel" role="button" data-bs-slide="prev">
+
+          <Link className="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
             <span className="carousel-control-prev-icon bi bi-chevron-left" aria-hidden="true"></span>
           </Link>
-    
-          <Link className="carousel-control-next" to="#heroCarousel" role="button" data-bs-slide="next">
+
+          <Link className="carousel-control-next" href="#heroCarousel" role="button" data-bs-slide="next">
             <span className="carousel-control-next-icon bi bi-chevron-right" aria-hidden="true"></span>
           </Link>
-    
+
         </div>
       </section>
-    
+
       <main id="main">
-    
-        
+
+
         <section id="about" className="about">
           <div className="container">
-    
+
             <div className="row content">
               <div className="col-lg-6">
                 <h2>Eum ipsam laborum deleniti velitena</h2>
@@ -84,49 +84,48 @@ function Home() {
                 </p>
               </div>
             </div>
-    
+
           </div>
         </section>
-    
-        
+
         <section id="clients" className="clients section-bg">
           <div className="container">
-    
+
             <div className="row">
-    
+
               <div className="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
                 <img src="assets/img/clients/client-1.png" className="img-fluid" alt="" />
               </div>
-    
+
               <div className="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
                 <img src="assets/img/clients/client-2.png" className="img-fluid" alt="" />
               </div>
-    
+
               <div className="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
                 <img src="assets/img/clients/client-3.png" className="img-fluid" alt="" />
               </div>
-    
+
               <div className="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
                 <img src="assets/img/clients/client-4.png" className="img-fluid" alt="" />
               </div>
-    
+
               <div className="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
                 <img src="assets/img/clients/client-5.png" className="img-fluid" alt="" />
               </div>
-    
+
               <div className="col-lg-2 col-md-4 col-6 d-flex align-items-center justify-content-center">
                 <img src="assets/img/clients/client-6.png" className="img-fluid" alt="" />
               </div>
-    
+
             </div>
-    
+
           </div>
         </section>
-    
-        
+
+
         <section id="services" className="services">
           <div className="container">
-    
+
             <div className="row">
               <div className="col-md-6">
                 <div className="icon-box">
@@ -171,14 +170,14 @@ function Home() {
                 </div>
               </div>
             </div>
-    
+
           </div>
         </section>
-    
-        
+
+
         <section id="portfolio" className="portfolio">
           <div className="container">
-    
+
             <div className="row">
               <div className="col-lg-12 d-flex justify-content-center">
                 <ul id="portfolio-flters">
@@ -189,9 +188,9 @@ function Home() {
                 </ul>
               </div>
             </div>
-    
+
             <div className="row portfolio-container">
-    
+
               <div className="col-lg-4 col-md-6 portfolio-item filter-app">
                 <div className="portfolio-wrap">
                   <img src="assets/img/portfolio/portfolio-1.jpg" className="img-fluid" alt="" />
@@ -205,7 +204,7 @@ function Home() {
                   </div>
                 </div>
               </div>
-    
+
               <div className="col-lg-4 col-md-6 portfolio-item filter-web">
                 <div className="portfolio-wrap">
                   <img src="assets/img/portfolio/portfolio-2.jpg" className="img-fluid" alt="" />
@@ -219,7 +218,7 @@ function Home() {
                   </div>
                 </div>
               </div>
-    
+
               <div className="col-lg-4 col-md-6 portfolio-item filter-app">
                 <div className="portfolio-wrap">
                   <img src="assets/img/portfolio/portfolio-3.jpg" className="img-fluid" alt="" />
@@ -233,7 +232,7 @@ function Home() {
                   </div>
                 </div>
               </div>
-    
+
               <div className="col-lg-4 col-md-6 portfolio-item filter-card">
                 <div className="portfolio-wrap">
                   <img src="assets/img/portfolio/portfolio-4.jpg" className="img-fluid" alt="" />
@@ -247,7 +246,7 @@ function Home() {
                   </div>
                 </div>
               </div>
-    
+
               <div className="col-lg-4 col-md-6 portfolio-item filter-web">
                 <div className="portfolio-wrap">
                   <img src="assets/img/portfolio/portfolio-5.jpg" className="img-fluid" alt="" />
@@ -261,7 +260,7 @@ function Home() {
                   </div>
                 </div>
               </div>
-    
+
               <div className="col-lg-4 col-md-6 portfolio-item filter-app">
                 <div className="portfolio-wrap">
                   <img src="assets/img/portfolio/portfolio-6.jpg" className="img-fluid" alt="" />
@@ -275,7 +274,7 @@ function Home() {
                   </div>
                 </div>
               </div>
-    
+
               <div className="col-lg-4 col-md-6 portfolio-item filter-card">
                 <div className="portfolio-wrap">
                   <img src="assets/img/portfolio/portfolio-7.jpg" className="img-fluid" alt="" />
@@ -289,7 +288,7 @@ function Home() {
                   </div>
                 </div>
               </div>
-    
+
               <div className="col-lg-4 col-md-6 portfolio-item filter-card">
                 <div className="portfolio-wrap">
                   <img src="assets/img/portfolio/portfolio-8.jpg" className="img-fluid" alt="" />
@@ -303,7 +302,7 @@ function Home() {
                   </div>
                 </div>
               </div>
-    
+
               <div className="col-lg-4 col-md-6 portfolio-item filter-web">
                 <div className="portfolio-wrap">
                   <img src="assets/img/portfolio/portfolio-9.jpg" className="img-fluid" alt="" />
@@ -317,15 +316,15 @@ function Home() {
                   </div>
                 </div>
               </div>
-    
+
             </div>
-    
+
           </div>
         </section>
-    
+
       </main>
-    </>    
+    </>
   );
-}
+};
 
 export default Home;

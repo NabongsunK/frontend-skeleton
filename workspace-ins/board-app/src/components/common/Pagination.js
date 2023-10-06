@@ -1,12 +1,28 @@
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import queryString from 'query-string';
+import { useEffect } from "react";
 
-const Pagination = function(){
+
+const Pagination = function({totalPage, current=1}){
+  const location = useLocation();
+  let pageList = [];
+
+  const parsedQS = queryString.parse(location.search);
+
+  useEffect(()=>{
+    console.log('Pagination 마운트.');
+  });
+
+  for(let page=1; page<=totalPage; page++){
+    parsedQS.page = page;
+    let search = queryString.stringify(parsedQS);
+    pageList.push(<li key={page} className={current==page?'active':''} ><Link to={`/boards?${search}`}>{page}</Link></li>);
+  }
   return (
     <div className="blog-pagination">
       <ul className="justify-content-center">
-        <li><Link to="#">1</Link></li>
-        <li className="active"><Link to="#">2</Link></li>
-        <li><Link to="#">3</Link></li>
+        {pageList}
       </ul>
     </div>
   );
