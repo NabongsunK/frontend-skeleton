@@ -1,10 +1,12 @@
 var express = require('express');
 var router = express.Router({mergeParams: true});
 
-const boardRouter = require('./board');
-const userRouter = require('./users');
+var boardsRouter = require('./boards');
+var usersRouter = require('./users');
+var authRouter = require('./auth');
 
-router.use('/boards', boardRouter);
-router.use('/users', userRouter);
+router.use('/boards', boardsRouter);
+router.use('/users', usersRouter);
+router.use('/auth', authRouter);
 
 module.exports = router;

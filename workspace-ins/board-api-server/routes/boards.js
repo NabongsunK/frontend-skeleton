@@ -1,14 +1,15 @@
 var express = require('express');
 var router = express.Router();
-
 const boardModel = require('../models/board.model');
 const commentModel = require('../models/board-comment.model');
 const boardService = require('../services/board.service');
+const { auth } = require('../middlewares/jwtAuth');
 
 // 게시물 목록 조회
-router.get('/', async (req, res, next) => {
+router.get('/', async function(req, res, next) {
   try{
-    const list = await boardModel.find();
+    const page = Number(req.query.page || 1);
+    const list = await boardModel.find(page);
     res.json(list);
   }catch(err){
     next(err);
@@ -16,7 +17,7 @@ router.get('/', async (req, res, next) => {
 });
 
 // 게시물 상세 조회
-router.get('/:id', async (req, res, next) => {
+router.get('/:id', async function(req, res, next) {
   try{
     const id = Number(req.params.id);
     const article = await boardModel.findById(id);
@@ -27,9 +28,9 @@ router.get('/:id', async (req, res, next) => {
 });
 
 // 게시물 등록
-router.post('/', async (req, res, next) => {
+router.post('/', auth, async function(req, res, next) {
   try{
-    const article = req.body;
+    const article = { ...req.body, userId: req.user.id };
     const id = await boardModel.create(article);
     res.json({ id });
   }catch(err){
@@ -38,10 +39,10 @@ router.post('/', async (req, res, next) => {
 });
 
 // 게시물 수정
-router.put('/:id', async (req, res, next) => {
+router.put('/:id', async function(req, res, next) {
   try{
-    const id = Number(req.params.id);
     const article = req.body;
+    const id = Number(req.params.id);
     const count = await boardModel.update(id, article);
     res.json({ count });
   }catch(err){
@@ -50,7 +51,7 @@ router.put('/:id', async (req, res, next) => {
 });
 
 // 게시물 삭제
-router.delete('/:id', async (req, res, next) => {
+router.delete('/:id', async function(req, res, next) {
   try{
     const id = Number(req.params.id);
     const count = await boardService.delete(id);
@@ -61,16 +62,38 @@ router.delete('/:id', async (req, res, next) => {
 });
 
 // 댓글 등록
-router.post('/:id/comments', async (req, res, next) => {
+router.post('/:boardId/comments', auth, async function(req, res, next) {
   try{
-    const userId = 2;
-    const article = {
-      boardId: Number(req.body.boardId),
-      content: req.body.content,
-      userId: userId
+    const comment = {
+      boardId: Number(req.params.boardId),
+      userId: req.user.id,
+      content: req.body.content
     };
-    const comment = await commentModel.create(article);
-    res.json({ comment });
+    const id = await commentModel.create(comment);
+    res.json({ id });
+  }catch(err){
+    next(err);
+  }
+});
+
+// 댓글 목록 조회
+router.get('/:boardId/comments', async (req, res, next) => {
+  try{
+    const boardId = Number(req.params.boardId);
+    const page = Number(req.query.page || 1);
+    const comments = await commentModel.find(boardId, page);
+    res.json(comments);
+  }catch(err){
+    next(err);
+  }
+});
+
+// 댓글 상세 조회
+router.get('/comments/:id', async (req, res, next) => {
+  try{
+    const id = Number(req.params.id);
+    const comment = await commentModel.findById(id);
+    res.json(comment);
   }catch(err){
     next(err);
   }

@@ -4,13 +4,13 @@
 ```
 npx express-generator board-api-server --no-view
 cd board-api-server
-npm install
+npm i
 ```
 
 ### 포트 변경
 * bin/www 파일 수정
 ```
-var port = normalizePort(process.env.PORT || '30443');
+var port = normalizePort(process.env.PORT || '33443');
 ```
 
 ### 서버 구동 명령 변경
@@ -46,13 +46,16 @@ npm start
 
 ### 테스트
 * 웹 브라우저로 접속
-  - http://localhost:30443
+  - http://localhost:33443
+
+
 
 ## DB 설계
 ### MySQL Workbench 실행
 * File > New Model
 * mydb 마우스 우클릭 > Edit Schema
-  - Name: boarddb
+  - name: boarddb
+* Add Diagram
 
 ### user 테이블
 * Model Overwiew > Add Diagram 더블 클릭해서 새로운 다이어그램 추가
@@ -68,13 +71,14 @@ npm start
   - cellphone: VARCHAR(11), 사용자 휴대폰 번호
   - password: VARCHAR(45), NN, 사용자 비밀번호
   - createdAt: DATETIME, NN, default: CURRENT_TIMESTAMP, 생성일
-  - updatedAt: DATETIME, defualt: CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 수정일
+  - updatedAt: DATETIME, default: CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 수정일
+* user - Table 닫기
 
 ### board 테이블
 #### 생성
-* boarddb > Tables > Place a New Table > 화면 클릭
+* boardDB > Tables > Place a New Table > 화면 클릭
 #### 수정
-* 생성된 table1 더블 클릭
+* 생성된 테이블 더블클릭
 * Table Name: board
 * Column Name
   - id: INT, PK, NN, AI 체크, Comments: 게시물 아이디
@@ -83,43 +87,53 @@ npm start
   - content: VARCHAR(1024), NN, 내용
   - filePath: VARCHAR(1024), 첨부파일 경로
   - createdAt: DATETIME, NN, default: CURRENT_TIMESTAMP, 생성일
-  - updatedAt: DATETIME, defualt: CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 수정일
+  - updatedAt: DATETIME, default: CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP, 수정일
 #### userId에 FK 추가
 * Foreign Keys 탭 선택
 * Foreign Key Name: fk_board_userId
-* Referenced Table: 'boarddb'.'user'
+* Referenced Table: 'boardDB'.'user'
 * Column: userId
 * Referenced Column: id
+- board - Table 닫기
 
 ### board_comment 테이블
 #### 생성
-* boarddb > Tables > Place a New Table > 화면 클릭
+* boardDB > Tables > Place a New Table > 화면 클릭
 #### 수정
-* 생성된 table1 더블 클릭
+* 생성된 테이블 더블클릭
 * Table Name: board_comment
 * Column Name
   - id: INT, PK, NN, AI 체크, Comments: 댓글 아이디
   - boardId: INT, NN, 게시물 아이디
-  - userId: INT, NN, 작성자 아이디
   - content: VARCHAR(1024), NN, 댓글 내용
+  - userId: INT, NN, 작성자 아이디
   - createdAt: DATETIME, NN, default: CURRENT_TIMESTAMP, 생성일
-
+#### boardId 인덱스 생성
+* Indexes 탭 선택
+* Index Name: board_comment_idx_boardId
+* Type: INDEX
+* Index Columns: boardId
+#### userId 인덱스 생성
+* Indexes 탭 선택
+* Index Name: board_comment_idx_userId
+* Type: INDEX
+* Index Columns: userId
 #### boardId에 FK 추가
 * Foreign Keys 탭 선택
 * Foreign Key Name: fk_board_comment_boardId
-* Referenced Table: 'boarddb'.'board'
+* Referenced Table: 'boardDB'.'board'
 * Column: boardId
 * Referenced Column: id
-
 #### userId에 FK 추가
 * Foreign Keys 탭 선택
 * Foreign Key Name: fk_board_comment_userId
-* Referenced Table: 'boarddb'.'user'
+* Referenced Table: 'boardDB'.'user'
 * Column: userId
 * Referenced Column: id
+* board_comment - Table 닫기
 
 ### ERD 저장
-* workspace/docs/boarddb 지정
+* docs/boardDB 지정
 
 ### ERD로 테이블 생성
 * Database > Forward Engineer
@@ -136,20 +150,27 @@ npm start
 module.exports = {
   mysql: {
     host: 'localhost',
-    port: '33306',
+    port: 33306,
     database: 'boarddb',
     user: 'node',
     password: 'node'
   }
 };
 ```
-
 ### model 작성
-* models/pool.js 파일 생성
+* models 폴더 생성
+* models/pool.js 생성
 ```
 const mysql2 = require('mysql2/promise');
-const { mysql } = require('../config');
-const pool = mysql2.createPool(mysql);
+const { mysql:config } = require('../config');
+
+let pool = mysql2.createPool(config);
+console.log(`DB 연결중... ${config.host}:${config.port}`);
+const conn = pool.getConnection()
+  .then(()=>console.log('DB 연결 성공.'))
+  .catch(err=>console.error('DB 연결 에러.', err))
+  .finally(()=>pool.releaseConnection(conn));
+  
 module.exports = pool;
 ```
 * models/board.model.js 작성
@@ -175,23 +196,25 @@ const boardModel = {
 module.exports = boardModel;
 ```
 ### router 작성
-* app.js 수정
+* REST URL 정의.xlsx 작성
+* app.js의 라우터 미들웨어 수정
 ```
 app.use('/api', indexRouter);
 ```
-* routes/index.js 파일 수정
+* routes/index.js 수정
 ```
 var express = require('express');
 var router = express.Router({mergeParams: true});
 
-const boardRouter = require('./board');
-const userRouter = require('./users');
+var boardsRouter = require('./board');
+var usersRouter = require('./users');
 
-router.use('/boards', boardRouter);
-router.use('/users', userRouter);
+app.use('/boards', boardsRouter);
+app.use('/users', usersRouter);
 
 module.exports = router;
 ```
+
 * routes/board.js 파일 생성
 ```
 var express = require('express');
@@ -211,6 +234,7 @@ router.get('/', async (req, res, next) => {
 
 module.exports = router;
 ```
+
 ### 브라우저 테스트
 * http://localhost:30443/api/boards
 ### postman 테스트
