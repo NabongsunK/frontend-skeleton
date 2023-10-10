@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "cross-env NODE_ENV=production DEBUG=board-api-server node ./bin/www",
+    "start": "cross-env NODE_ENV=production node ./bin/www-https",
     "dev": "cross-env NODE_ENV=development nodemon -r dotenv/config ./bin/www",
     "local": "cross-env NODE_ENV=local nodemon -r dotenv/config ./bin/www"
   },
@@ -15,6 +15,7 @@
     "dotenv": "^16.3.1",
     "express": "~4.16.1",
     "express-session": "^1.17.3",
+    "greenlock-express": "^4.0.3",
     "jsonwebtoken": "^9.0.2",
     "morgan": "~1.9.1",
     "mysql2": "^3.6.1"
