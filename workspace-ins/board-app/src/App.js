@@ -1,32 +1,32 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import "./App.css";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import './App.css';
 
-import Layout from "./components/layout";
-import Home from "./pages/home";
-import Board from "./pages/board";
-import BoardList from "./pages/board/BoardList";
-import BoardNew from "./pages/board/BoardNew";
-import BoardDetail from "./pages/board/BoardDetail";
-import NotFound from "./pages/NotFound";
+import Layout from './components/layout';
+import Home from './pages/home';
+import Board from './pages/board';
+import BoardList from './pages/board/BoardList';
+import BoardNew from './pages/board/BoardNew';
+import BoardDetail from './pages/board/BoardDetail';
+import NotFound from './pages/NotFound';
 
-import { Provider } from "react-redux";
-import store from "./redux/store";
-import User from "./pages/user";
-import React, { Suspense, useEffect } from "react";
-import Login from "./pages/user/Login";
-import LoginRecoil from "./pages/user/LoginRecoil";
-import Signup from "./pages/user/Signup";
+import { Provider } from 'react-redux';
+import store from './redux/store';
+import User from './pages/user';
+import React, { Suspense, useEffect } from 'react';
+import Login from './pages/user/Login';
+import LoginRecoil from './pages/user/LoginRecoil';
+import Signup from './pages/user/Signup';
 
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import Loading from "./components/common/Loading";
+import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
+import Loading from './components/common/Loading';
 
 const queryClient = new QueryClient();
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
-import { RecoilRoot } from "recoil";
+import { ReactQueryDevtools } from '@tanstack/react-query-devtools';
+import { RecoilRoot } from 'recoil';
 
 function App() {
   useEffect(() => {
-    console.log("App 업데이트.");
+    console.log('App 업데이트.');
   });
 
   return (
