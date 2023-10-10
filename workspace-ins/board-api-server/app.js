@@ -60,9 +60,13 @@ app.use(
 
 // app.use('/api', indexRouter);
 
-app.use((req, res, next) => {
+app.use("/api", (req, res, next) => {
   console.error(404, req.url);
   res.status(404).json({ error: { message: "존재하지 않는 API입니다." } });
+});
+
+app.use("/", (req, res, next) => {
+  res.sendFile(path.join(__dirname, "..", "board-app", "build", "index.html"));
 });
 
 app.use((err, req, res, next) => {
