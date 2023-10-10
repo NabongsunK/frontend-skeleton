@@ -35,7 +35,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "start:prod": "npx serve -l 33000 -s build",
+    "start:prod": "npx serve -l 80 -s build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
