@@ -2,7 +2,7 @@
   "sites": [
     {
       "subject": "board.aws2.store",
-      "altnames": ["board.aws2.store"]
+      "altnames": ["board.aws2.store", "joinify.aws2.store"]
     }
   ]
 }
