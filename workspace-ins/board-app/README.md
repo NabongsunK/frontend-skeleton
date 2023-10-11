@@ -325,5 +325,7 @@ const res = await axios.get(`${process.env.REACT_APP_API_SERVER}/boards`);
 
 ### 전역 상태 관리
 #### Recoil
+* 로그인 상태 저장에 사용
+* 페이지 새로고침시 상태 정보가 전부 초기화됨
 #### recoil-persist
-
+* recoil과 같이 사용할 경우 상태값을 localStorage나 sessionStorate에 저장하므로 페이지 새로고침에도 상태 정보가 유지됨
