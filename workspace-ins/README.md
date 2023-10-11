@@ -2,17 +2,17 @@
 
 ## 프로젝트 소개
 
-## 팀원 소개
+### 팀원 소개
 
-## 개발 일정
+### 개발 일정
 
-## 개발 환경
+### 개발 환경
 
-## 커뮤니케이션 도구
+### 커뮤니케이션 도구
 
-## 컨벤션
+### 컨벤션
 
-### 코드 컨벤션
+#### 코드 컨벤션
 * 가독성이 좋고 유지보수가 쉬운 코드를 작성하기 위한 코딩 스타일 규약
 * 개발자간 서로 다른 코딩 스타일 예시
 
@@ -32,7 +32,7 @@ const App = function(){
 const App = () => <h1>Hello</h1>;
 ```
 
-#### 다양한 코드 컨벤션 가이드
+##### 다양한 코드 컨벤션 가이드
 * [Airbnb JavsScript Style Guide](https://github.com/airbnb/javascript)
 * [Airbnb React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react)
 * [JavaScript Standard Style](https://standardjs.com/readme-kokr.html)
@@ -236,10 +236,10 @@ npm i -D eslint-config-prettier
   - "Editor: Format On Save" 체크 (파일 저장시 자동으로 포맷팅)
   - "Editor: Default Formatter"에 "Prettier - Code formatter" 선택 (기본 JavaScript formatter 대신 Prettier를 formatter로 지정)
 
-### Git 커밋 메세지 컨벤션
+#### Git 커밋 메세지 컨벤션
 * 커밋 메세지의 일관성을 위해 작성
 
-#### Udacity Git Commit Message Style Guide
+##### Udacity Git Commit Message Style Guide
 * 메세지 구조
 
 ```
@@ -277,7 +277,7 @@ Resolves: #123
 See also: #456, #789
 ```
 
-#### Gitmoji
+##### Gitmoji
 * Git + Emoji
 * Git 커밋 메세지의 type을 텍스트 대신 Emoji로 지정해서 한눈에 어떤 작업을 했는지 식별
 
@@ -358,5 +358,6 @@ See also: #456, #789
     "gitmoji.onlyUseCustomEmoji": true,
   }
   ```
-* Gitmoji 사용
-  - VSCode > Source Control 커밋 메세지 입력시 Choose Gitmoji 아이콘 선택해서 사용
+##### Gitmoji 사용
+* VSCode > Source Control 커밋 메세지 입력시 Choose Gitmoji 아이콘 선택해서 사용
+
