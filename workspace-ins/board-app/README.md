@@ -230,17 +230,25 @@ queryClient.invalidateQueries(['boards', 3, 'comments'])
 ```
 npm i dotenv
 ```
-* .env 파일 작성
-  - 프로젝트 루트에 .env 파일 생성
-  - React에서 사용할 환경변수는 반드시 REACT_APP_ 접두사로 시작해야 함
+* CRA로 프로젝트를 생성했을 경우 따로 설치할 필요 없음
+#### 환경 설정 파일
+* 프로젝트 루트에 .env 파일 생성
+  - CRA로 프로젝트를 생성했을 경우 환경변수는 반드시 REACT_APP_ 접두사로 시작해야 함
+  - Vite로 생성했을 경우 환경변수는 반드시 VITE_ 접두사로 시작해야 함
 * 예시
 ```
 REACT_APP_API_SERVER=http://localhost:33443/api
 REACT_APP_KAKAO_MAP_API_KEY=4cd4396a562ece1a9a522481df8561c5
 ```
+* .env 파일 수정 후 서버 재시작 필요
+* 외부에 노출되면 안되는 중요한 정보를 담고 있을 경우 github의 공개 프로젝트라면 .gitignore에 추가해서 커밋되지 않도록 지정
+```
+.env
+```
 
 #### 컴포넌트에서 사용(*.js, *.jsx, *.ts, *.tsx)
-* process.env 변수를 통해서 사용
+* CRA 프로젝트는 process.env 변수를 통해서 사용
+* Vite 프로젝트는 import.meta.env 변수를 통해서 사용
 * 예시
 ```
 const res = await axios.get(process.env.REACT_APP_API_SERVER + '/boards');
