@@ -1,16 +1,6 @@
 # React 게시판 스켈레톤 프로젝트
 
-## 프로젝트 소개
-
-## 팀원 소개
-
-## 개발 일정
-
-## 개발 환경
-
-## 컨벤션
-
-### 코드 컨벤션
+## 코드 컨벤션
 * 가독성이 좋고 유지보수가 쉬운 코드를 작성하기 위한 코딩 스타일 규약
 * 개발자간 서로 다른 코딩 스타일 예시
 
@@ -30,16 +20,16 @@ const App = function(){
 const App = () => <h1>Hello</h1>;
 ```
 
-#### 다양한 코드 컨벤션 가이드
+### 다양한 코드 컨벤션 가이드
 * [Airbnb JavsScript Style Guide](https://github.com/airbnb/javascript)
 * [Airbnb React/JSX Style Guide](https://github.com/airbnb/javascript/tree/master/react)
 * [JavaScript Standard Style](https://standardjs.com/readme-kokr.html)
 * [Idiomatic JavaScript Style Guide](https://github.com/rwaldron/idiomatic.js/tree/master/translations/ko_KR)
 * [Google Style Guide](https://google.github.io/styleguide/jsguide.html)
 
-#### ESLint 컨벤션
+### ESLint 컨벤션
 
-##### ESLint
+#### ESLint
 * 정적 문법 검사 및 코딩 스타일 등을 점검해서 런타임 오류나 코드의 가독성을 높이기 위해 사용하는 도구
 * 규칙 예시
   - const로 선언한 변수에 값을 재할당하면 경고
@@ -50,7 +40,7 @@ const App = () => <h1>Hello</h1>;
 * create-react-app으로 생성한 프로젝트에는 기본으로 내장되어 있고 npm start로 서버 구동시 동작
   - 터미널에서 ESLint 경고/에러 확인 가능
 
-##### React 프로젝트의 ESLint 설정
+#### React 프로젝트의 ESLint 설정
 * 설정 파일 작성 방법: https://eslint.org/docs/latest/use/configure/configuration-files
 * 프로젝트 루트에서 다음 명령 실행후 프로젝트 환경 질문에 답변하면 .eslintrc.js 파일 생성됨
 ```
@@ -124,7 +114,7 @@ module.exports = {
   - 'warn' 또는 1
   - 'error' 또는 2
 
-##### 커스텀 규칙 설정
+#### 커스텀 규칙 설정
 * 필요에 따라 .eslintrc.js 파일의 rules에 커스텀 룰 추가
 * 작성 방법: https://eslint.org/docs/latest/rules
 ```
@@ -137,7 +127,7 @@ module.exports = {
 }
 ```
 
-##### ESLint 실행
+#### ESLint 실행
 * 현재 폴더내의 모든 파일 검사
 ```
 npx eslint .
@@ -151,7 +141,7 @@ npx eslint ./src
 npx eslint ./src/App.js
 ```
 
-##### VSCode ESLint 플러그인 설치
+#### VSCode ESLint 플러그인 설치
 * VSCode 편집창에서 바로 ESLint 경고/에러 확인 가능
 * VSCode > Extensions > ESLint 검색, 설치
   - VSCode에서 오픈한 작업폴더에 설치된 eslint 모듈이나 글로벌로 설치된 eslint 모듈을 사용하므로 eslint 모듈이 설치되어 있어야 함(create-react-app으로 프로젝트 생성시 기본으로 설치됨)
@@ -161,12 +151,12 @@ npx eslint ./src/App.js
   ```
 
 
-#### Prettier 컨벤션
+### Prettier 컨벤션
 
-##### Prettier
+#### Prettier
 * 자바스크립트 Code Formatting 도구(코드 정렬, 정리 등 코드 스타일 통일에 사용)
 
-##### 프로젝트에 Prettier 설정
+#### 프로젝트에 Prettier 설정
 * Prettier 설치
 ```
 npm i prettier
@@ -196,7 +186,7 @@ module.exports = {
 };
 ```
 
-##### Prettier 실행
+#### Prettier 실행
 * 현재 폴더내의 모든 파일을 포맷에 맞춰서 변환
 ```
 npx prettier --write .
@@ -210,7 +200,7 @@ npx prettier --write ./src
 npx prettier --write ./src/App.js
 ```
 
-##### ESLint와 충돌
+#### ESLint와 충돌
 * ESLint는 코드 품질 규칙뿐만 아니라 스타일 규칙도 포함됨
 * 코드 품질 문제는 ESLint를 사용하고 스타일 규칙은 Prettier를 사용
 * eslint-config-prettier: 불필요하거나 Prettier와 충돌할 수 있는 모든 규칙을 비활성화시키는 Shareable Config 모듈
@@ -228,16 +218,16 @@ npm i -D eslint-config-prettier
 }
 ```
 
-##### VSCode에 Prettier Extention 추가
+#### VSCode에 Prettier Extention 추가
 * Extentions > Prettier - Code formatter 설치
 * File > Preferences > Settings > Workspace
   - "Editor: Format On Save" 체크 (파일 저장시 자동으로 포맷팅)
   - "Editor: Default Formatter"에 "Prettier - Code formatter" 선택 (기본 JavaScript formatter 대신 Prettier를 formatter로 지정)
 
-### Git 커밋 메세지 컨벤션
+## Git 커밋 메세지 컨벤션
 * 커밋 메세지의 일관성을 위해 작성
 
-#### Udacity Git Commit Message Style Guide
+### Udacity Git Commit Message Style Guide
 * 메세지 구조
 
 ```
@@ -275,12 +265,13 @@ Resolves: #123
 See also: #456, #789
 ```
 
-#### Gitmoji
+### Gitmoji
 * Git + Emoji
 * Git 커밋 메세지의 type을 텍스트 대신 Emoji로 지정해서 한눈에 어떤 작업을 했는지 식별
 
-##### VSCode에 Gitmoji Extention 추가
+#### Gitmoji 설치
 * Extentions > Gitmoji 설치
+#### Gitmoji 설정
 * File > Preferences > Settings > Workspace
   - "Gitmoji: Add Custom Emoji" > Edit in settings.json 클릭 후 Git 커밋 메세지 컨벤션에 맞춰서 커스텀 이모지 추가
   - 예시
@@ -356,5 +347,6 @@ See also: #456, #789
     "gitmoji.onlyUseCustomEmoji": true,
   }
   ```
-* Gitmoji 사용
-  - VSCode > Source Control 커밋 메세지 입력시 Choose Gitmoji 아이콘 선택해서 사용
+#### Gitmoji 사용
+* VSCode > Source Control 커밋 메세지 입력시 Choose Gitmoji 아이콘 선택해서 사용
+
